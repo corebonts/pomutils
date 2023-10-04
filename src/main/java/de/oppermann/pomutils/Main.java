@@ -48,16 +48,19 @@ public class Main {
 		try {
 			resultValue = mainInternal(args);
 			logger.debug("Exiting with exit code {}", resultValue);
+		} catch (ParameterException e) {
+			System.err.println(e.getMessage());
+			resultValue = 1;
 		} catch (Exception e) {
 			System.err.println("We got an exception on merge: " + StringUtils.join(args, " "));
 			e.printStackTrace();
-			System.exit(1);
+			resultValue = 1;
 		}
 
 		System.exit(resultValue);
 	}
 
-	protected static int mainInternal(String... args) {
+	protected static int mainInternal(String... args) throws ParameterException{
 		CommandMain mainCommand = new CommandMain();
 		CommandPomMergeDriver mergeCommand = new CommandPomMergeDriver();
 		CommandPomVersionReplacer versionReplacerCommand = new CommandPomVersionReplacer();
@@ -66,12 +69,7 @@ public class Main {
 		jc.addCommand("merge", mergeCommand);
 		jc.addCommand("replace", versionReplacerCommand);
 
-		try {
-			jc.parse(args);
-		} catch (ParameterException e) {
-			System.err.println(e.getMessage());
-			return 1;
-		}
+		jc.parse(args);
 
 		String logLevel = mainCommand.isDebug() ? "debug" : "error";
 		System.setProperty(SimpleLogger.DEFAULT_LOG_LEVEL_KEY, logLevel);
