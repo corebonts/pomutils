@@ -1,0 +1,102 @@
+[
+  {
+    "name": "com.beust.jcommander.converters.NoConverter",
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.beust.jcommander.converters.BooleanConverter",
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": ["java.lang.String"]
+      }
+    ]
+  },
+  {
+    "name": "com.beust.jcommander.converters.FileConverter",
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.beust.jcommander.converters.StringConverter",
+    "queryAllDeclaredConstructors": true,
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.beust.jcommander.validators.NoValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "com.beust.jcommander.validators.NoValueValidator",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.oppermann.pomutils.commands.SelectionStrategyConverter",
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "de.oppermann.pomutils.commands.CommandMain",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "de.oppermann.pomutils.commands.CommandPomMergeDriver",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "de.oppermann.pomutils.commands.CommandPomVersionReplacer",
+    "allDeclaredFields": true,
+    "queryAllDeclaredMethods": true
+  },
+  {
+    "name": "java.io.Console",
+    "methods": [
+      {
+        "name": "writer",
+        "parameterTypes": []
+      }
+    ]
+  },
+  {
+    "name": "java.lang.System",
+    "methods": [
+      {
+        "name": "console",
+        "parameterTypes": []
+      }
+    ]
+  }
+]

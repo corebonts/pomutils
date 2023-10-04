@@ -24,10 +24,12 @@ For ~100 pom.xml files it takes around 20 seconds to merge them.
 Installation
 ------------
 
-Download the [jar](https://github.com/cecom/pomutils/releases/latest) file or create it with `mvn clean install` and execute it with java >1.6.
-It's a shaded jar, which contains all necessary dependencies.
+Download the [jar](https://github.com/cecom/pomutils/releases/latest) file, the native image (OS dependent),
+or create it with `mvn clean install` and execute it with java >1.8.
+It's a shaded file, which contains all necessary dependencies.
 
 For usage, call: `java -jar pomutils-X.X.jar --help`
+or `./pomutils-X.X --help` (for native images)
 
 ```
 java -jar target/pomutils-1.0.jar --help
@@ -90,6 +92,10 @@ This command is used as pom merge driver in git. To configure it you have to do 
 
 	```driver = java -jar -client -Xverify:none -Xms32m -Xmx32m  <pathToJar>/pomutils-X.X.jar merge --base=%O --our=%A --their=%B```
 
+   With the native image, use the following line:
+
+   ```driver = <pathToExecutable>/pomutils-X.X merge --base=%O --our=%A --their=%B```
+
 3. Done.
 
 By default, project/parent version conflicts will be resolved using *our* version.
@@ -150,6 +156,19 @@ This command is used to set the parent/project version of a single pom.xml file.
 
 `java -jar <pathToJar>/pomutils-X.X.jar replace --pom=<pathToPomFile> --version=<newVersion>`
 
+Building a Graal Native Image
+------------
+In large repositories containing tens or hundreds of pom files, consecutive calls
+to the pomutils driver can lead to very long merges.
+
+To overcome this, a [native image](https://www.graalvm.org/22.0/reference-manual/native-image/)
+can be built which does not need the startup of the JVM every time the merge driver is called.
+
+The executable can be built by `mvn clean install -P native`.
+
+Note that the `JAVA_HOME` should be set to [Graal JDK](https://www.graalvm.org), and the
+environment should be ready for compiling C++.
+[Read more](https://www.graalvm.org/22.0/reference-manual/native-image/#prerequisites)
 
 HINTS
 ------------
